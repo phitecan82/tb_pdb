@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Nagari extends Model
 {
     use HasFactory;
+    protected $table = 'nagari';
+
+    public function jorongs(){
+        return $this->hasMany(Jorong::class);
+    }
+
+    public $timestamps = false;
 }

@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Jorong extends Model
 {
     use HasFactory;
+    protected $table = 'jorong';
+
+    public function nagari(){
+        return $this->belongsTo(Nagari::class);
+    }
+
+    public function keluargas(){
+        return $this->hasMany(KartuKeluarga::class );
+    }
+
+    public $timestamps = false;
 }
