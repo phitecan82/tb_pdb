@@ -9,7 +9,6 @@ class KartuKeluarga extends Model
 {
     use HasFactory;
     protected $table = 'kartu_keluarga';
-    public $timestamps = false;
 
     public function penduduks(){
         return $this->hasMany(Penduduk::class, 'keluarga_id', 'id');
@@ -19,4 +18,5 @@ class KartuKeluarga extends Model
         return $this->belongsTo(Jorong::class);
     }
 
+    public $timestamps = false;
 }

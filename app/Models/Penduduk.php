@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Penduduk extends Model
 {
     use HasFactory;
-
     protected $table = 'penduduk';
-
-    public $timestamp = false;
 
     public function kartuKeluarga(){
         return $this->belongsTo('kartu_keluarga', 'keluarga_id', 'id');
@@ -28,4 +25,6 @@ class Penduduk extends Model
     public function pekerjaan(){
         return $this->belongsTo('pekerjaan');
     }
+
+    public $timestamps = false;
 }

@@ -6,7 +6,7 @@ use App\Models\KartuKeluarga;
 use App\Models\Kewarganegaraan;
 use App\Models\LevelPendidikan;
 use App\Models\Pekerjaan;
-use App\Models\Penduduk;
+use App\Models\penduduk;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PendudukFactory extends Factory
@@ -16,7 +16,7 @@ class PendudukFactory extends Factory
      *
      * @var string
      */
-    protected $model = Penduduk::class;
+    protected $model = penduduk::class;
 
     /**
      * Define the model's default state.
@@ -36,13 +36,13 @@ class PendudukFactory extends Factory
                     foreach ($keluarga as $kartuKeluarga):
                         return [
                             'nama'=>$this->faker->name,
-                            'nik'=>$this->faker->unique()->bankAccountNumber,
+                            'nik'=>$this->faker->nik(),
                             'tempat_lahir'=>$this->faker->state,
                             'tanggal_lahir'=>$this->faker->dateTimeBetween(),
                             'agama'=>$this->faker->colorName,
                             'jenis_kelamin'=>$this->faker->randomElement(array('Laki-Laki', 'Perempuan')),
-                            'agama'=>$this->faker->randomElement(array('Islam','Kristen', 'Koghucu', 'Hindu' , 'Buddha')),
-                            'status_pernikahan'=>$this->faker->randomElement(array('Kawin', 'Belum Kawin', 'Cerai')),
+                            'agama'=>$this->faker->randomElement(array('Islam', 'Kristen','Koghucu', 'Hindu' , 'Buddha')),
+                            'status_pernikahan'=>$this->faker->randomElement(array('Kawin', 'Belum Kawin', 'Pisah')),
                             'status_keluarga'=>$this->faker->randomElement(array('Anak','Kepala Keluarga', 'Istri')),
                             'ayah'=>$this->faker->name('man'),
                             'ibu'=>$this->faker->name('woman'),
@@ -55,6 +55,7 @@ class PendudukFactory extends Factory
                 endforeach;
             endforeach;
         endforeach;
+
 
     }
 }

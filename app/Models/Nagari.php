@@ -10,11 +10,9 @@ class Nagari extends Model
     use HasFactory;
     protected $table = 'nagari';
 
-    public $timestamps = false;
-
     public function jorongs(){
         return $this->hasMany(Jorong::class);
     }
 
-
+    public $timestamps = false;
 }
