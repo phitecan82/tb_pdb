@@ -22,7 +22,7 @@ class JorongFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nama' => $this->faker->city
         ];
     }
 }

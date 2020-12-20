@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Jorong;
+use App\Models\Nagari;
 use Illuminate\Database\Seeder;
 
 class JorongSeeder extends Seeder
@@ -13,6 +15,13 @@ class JorongSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $nagaris = Nagari::all();
+
+        foreach ($nagaris as $nagari):
+            Jorong::factory()
+                ->count(2)
+                ->hasKeluargas(20)
+                ->create(['nagari_id'=>$nagari->id]);
+        endforeach;
     }
 }

@@ -13,6 +13,8 @@ class PendudukSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Penduduk::factory()
+            ->count(50)
+            ->create();
     }
 }

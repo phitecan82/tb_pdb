@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Jorong;
 use App\Models\KartuKeluarga;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,9 @@ class KartuKeluargaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'no'=> $this->faker->randomNumber(),
+            'jorong_id'=>Jorong::factory(),
+            'tanggal_pencatatan'=>$this->faker->date('Y/m/d')
         ];
     }
 }

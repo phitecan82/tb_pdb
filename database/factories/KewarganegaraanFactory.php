@@ -22,7 +22,7 @@ class KewarganegaraanFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nama'=>$this->faker->country
         ];
     }
 }
