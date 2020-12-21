@@ -17,5 +17,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('penduduk', \App\Http\Controllers\PendudukController::class);
-Route::resource('keluarga', \App\Http\Controllers\KartuKeluargaController::class);
+use App\Http\Controllers\KartuKeluargaController;
+use App\Http\Controllers\PendudukController;
+
+Route::resource('penduduk',PendudukController::class);
+Route::resource('keluarga',KartuKeluargaController::class);
+
+
+Route::post('/keluarga/index',[KartuKeluargaController::class,'createKeluarga'])->name('post.create');    

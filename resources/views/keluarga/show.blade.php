@@ -8,9 +8,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header"></div>
-                        <div class="card-body">
+                    <div class="panel">
+	                    <div class="panel-heading">
+                            <h3 class="panel-title">Detail Daftar Kartu Keluarga</h3>
+                            <br>
+                            <br>
+                                <div class="card">
+                                    <div class="card-header"></div>
+                                        <div class="card-body">
                             <div class="form-group row">
                                 <div class="col-md-3">
                                     <label for="" class="col-form-label">Nomor Kartu Keluarga</label>
@@ -49,9 +54,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
                 
                 <div class="col-lg-12">
-                    <div class="card">
+                    <div class="panel">
+	                    <div class="panel-heading">
+                        <div class="card">
                         <div class="card-header"></div>
                         <div class="card-body">
                         <br>

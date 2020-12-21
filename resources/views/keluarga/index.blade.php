@@ -55,40 +55,43 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Data Mahasiswa</h5>
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Data Keluarga</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form action = "/siswa/create" method = "POST">
-            {{csrf_field()}}
+            @if(Session::has('post_created'))
+                <div class="alert alert-sucsess" role="alert">
+                    {{Session::get(post_created)}}
+                </div>
+            @endif
+            <form  method = "POST" action="{{route('post.create')}}">
+            @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Nama Depan</label>
-                <input name ="nama_depan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Depan">        
+                <label for="exampleInputEmail1"></label>
+                <input name ="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Nama Belakang</label>
-                <input name ="nama_belakang" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Belakang">        
+                <label for="exampleInputEmail1">No KK</label>
+                <input name ="no" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
             </div>
-
             <div class="form-group">
-            <label for="exampleFormControlSelect1">Pilih Jenis Kelamin</label>
-            <select name ="jenis_kelamin" class="form-control" id="exampleFormControlSelect1">
-            <option value = "L">Laki-Laki</option> 
-            <option value = "P">Perempuan</option>
+                <label for="exampleInputEmail1">Jorong  </label>
+                <input name ="jorong_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
+            </div>
+            <!-- <div class="form-group">
+            <label for="exampleFormControlSelect1">Jorong</label>
+            <select name ="jorong_id" class="form-control" id="exampleFormControlSelect1">
+            @foreach($keluarga as $k)
+            <option value = "{{$k->jorong->id}}">{{$k->jorong->nama}}</option>
+            @endforeach
             </select>
-            </div>
+            </div> -->
             <div class="form-group">
-                <label for="exampleInputEmail1">Agama</label>
-                <input name ="agama" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Agama">        
-            </div>
-            
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Alamat </label>
-                <textarea name ="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+                <label for="exampleInputEmail1">Tanggal Pencatatan</label>
+                <input name ="tanggal_pencatatan" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Agama">        
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
