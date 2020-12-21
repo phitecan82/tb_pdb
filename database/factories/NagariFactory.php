@@ -22,7 +22,7 @@ class NagariFactory extends Factory
     public function definition()
     {
         return [
-            'nama'=>$this->faker->state
+            'nama'=>$this->faker->unique()->country
         ];
     }
 }

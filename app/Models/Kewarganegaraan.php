@@ -11,4 +11,8 @@ class Kewarganegaraan extends Model
     protected $table = 'kewarganegaraan';
 
     public $timestamps = false;
+
+    public function penduduk(){
+        return $this->hashMany('App\Models\Penduduk');
+    }
 }

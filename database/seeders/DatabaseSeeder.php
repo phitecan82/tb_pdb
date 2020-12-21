@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Pekerjaan::factory()->count(10)->create();
-        Kewarganegaraan::factory()->count(3)->create();
+        Kewarganegaraan::factory()->count(1)->create();
 
         $this->call([
             NagariSeeder::class,

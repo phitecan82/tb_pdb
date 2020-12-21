@@ -1,50 +1,101 @@
-@extends('layouts.app')
-
+@extends('layouts.master')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header"><i class="fa fa-align-justify"></i> Daftar Kartu Keluarga</div>
-                <div class="card-body">
-                    <table class="table table-responsive-sm table-bordered">
-                        <thead>
+<div class="main">
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Daftar Kartu Keluarga</h3>
+                    <div class="right">
+                        <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModalScrollable"></i></button>
+                    </div>
+				</div>
+				<div class="panel-body">
+					<table class="table">
+						<thead>
+							<tr>
+                            <th scope="col">Nomor KK</th>
+                            <th scope="col">Nagari</th>
+                            <th scope="col">Jorong</th>
+                            <th scope="col">Total Anggota</th>
+                            <th scope="col">Tanggal Pencatatan</th>
+                            <th scope="col">Aksi</th>
+                            </tr>
+						</thead>
+						<tbody>
+                        @foreach($keluarga as $kk)
                         <tr>
-                            <th>Nomor KK</th>
-                            <th>Nagari</th>
-                            <th>Jorong</th>
-                            <th>Total Anggota</th>
-                            <th>Tanggal Pencatatan</th>
-                            <th>Aksi</th>
+                            <td> {{$kk -> no}}</td>
+                            <td> {{$kk -> jorong->nagari->nama}}</td>
+                            <td> {{$kk -> jorong->nama}}</td>
+                            <td> {{$kk -> penduduks_count}}</td>
+                            <td> {{$kk -> tanggal_pencatatan}}</td>
+                            <td>
+
+                            <a href="{{ route('keluarga.show', [$kk->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
+                            <a href="/keluarga/{{$kk->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
+                            <a href="/keluarga/{{$kk->id}}/delete" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
+                            </td>
                         </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($keluarga as $kartu)
-                                <tr>
-                                    <td>{{ $kartu->no }}</td>
-                                    <td>{{ $kartu->jorong->nagari->nama }}</td>
-                                    <td>{{ $kartu->jorong->nama }}</td>
-                                    <td>{{ $kartu->penduduks_count }}</td>
-                                    <td>{{ $kartu->tanggal_pencatatan }}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('keluarga.show', [$kartu->id]) }}" class="btn btn-sm btn-info" type="button">
-                                                <i class="fas fa fa-info"></i></a>
-
-                                            <a href="{{ route('keluarga.destroy', [$kartu->id]) }}" class="btn btn-sm btn-danger" type="button">
-                                                <i class="fas fa fa-trash-alt"></i></a>
-
-                                            <a href="{{ route('keluarga.edit', [$kartu->id]) }}" class="btn btn-sm btn-success" type="button">
-                                                <i class="fas fa fa-edit"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @endforeach
+						</tbody>
+					</table>
                     {{ $keluarga->links() }}
+				</div>
+			</div>         
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Data Mahasiswa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form action = "/siswa/create" method = "POST">
+            {{csrf_field()}}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nama Depan</label>
+                <input name ="nama_depan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Depan">        
+            </div>
 
-@endsection
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nama Belakang</label>
+                <input name ="nama_belakang" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Belakang">        
+            </div>
+
+            <div class="form-group">
+            <label for="exampleFormControlSelect1">Pilih Jenis Kelamin</label>
+            <select name ="jenis_kelamin" class="form-control" id="exampleFormControlSelect1">
+            <option value = "L">Laki-Laki</option> 
+            <option value = "P">Perempuan</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Agama</label>
+                <input name ="agama" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Agama">        
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Alamat </label>
+                <textarea name ="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            </div>
+            </div>
+        </div>
+@stop
+

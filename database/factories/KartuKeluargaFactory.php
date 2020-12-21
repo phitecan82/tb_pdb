@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Jorong;
 use App\Models\KartuKeluarga;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class KartuKeluargaFactory extends Factory
@@ -25,7 +26,7 @@ class KartuKeluargaFactory extends Factory
         return [
             'no'=> $this->faker->randomNumber(),
             'jorong_id'=>Jorong::factory(),
-            'tanggal_pencatatan'=>$this->faker->date('Y/m/d')
+            'tanggal_pencatatan'=>Carbon::create($this->faker->dateTimeBetween('-5 years', 'now')->format('Y-m-d'))
         ];
     }
 }

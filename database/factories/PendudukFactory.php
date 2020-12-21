@@ -7,6 +7,7 @@ use App\Models\Kewarganegaraan;
 use App\Models\LevelPendidikan;
 use App\Models\Pekerjaan;
 use App\Models\penduduk;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PendudukFactory extends Factory
@@ -25,30 +26,29 @@ class PendudukFactory extends Factory
      */
     public function definition()
     {
-        $pendidikans = LevelPendidikan::all()->random(1);
+        $pendidikan = LevelPendidikan::all()->random(1);
         $pekerjaan = Pekerjaan::all()->random(1);
         $kewarganegaraan = Kewarganegaraan::all()->random(1);
         $keluarga = KartuKeluarga::all()->random(1);
 
-        foreach ($pendidikans as $pendidikan):
+        foreach ($pendidikan as $pendidikan):
             foreach ($pekerjaan as $pekerjaan):
                 foreach ($kewarganegaraan as $kewarganegaraan):
                     foreach ($keluarga as $kartuKeluarga):
                         return [
                             'nama'=>$this->faker->name,
                             'nik'=>$this->faker->nik(),
-                            'tempat_lahir'=>$this->faker->state,
-                            'tanggal_lahir'=>$this->faker->dateTimeBetween(),
-                            'agama'=>$this->faker->colorName,
+                            'tempat_lahir'=>$this->faker->city(),
+                            'tanggal_lahir'=>Carbon::create($this->faker->dateTimeBetween('-80 years', '-20 years')->format('Y-m-d')),
                             'jenis_kelamin'=>$this->faker->randomElement(array('Laki-Laki', 'Perempuan')),
-                            'agama'=>$this->faker->randomElement(array('Islam', 'Kristen','Koghucu', 'Hindu' , 'Buddha')),
-                            'status_pernikahan'=>$this->faker->randomElement(array('Kawin', 'Belum Kawin', 'Pisah')),
-                            'status_keluarga'=>$this->faker->randomElement(array('Anak','Kepala Keluarga', 'Istri')),
-                            'ayah'=>$this->faker->name('man'),
-                            'ibu'=>$this->faker->name('woman'),
-                            'keluarga_id'=>$kartuKeluarga->id,
+                            'agama'=>$this->faker->randomElement(['Islam', 'Kristen','Koghucu', 'Hindu' , 'Buddha']),
+                            'status_pernikahan'=>$this->faker->randomElement(['Kawin', 'Belum Kawin']),
+                            'status_keluarga'=>$this->faker->randomElement(['Anak','Suami', 'Istri']),
+                            'ayah'=>$this->faker->name('male'),
+                            'ibu'=>$this->faker->name('female'),
                             'level_pendidikan_id'=>$pendidikan->id,
                             'pekerjaan_id'=>$pekerjaan->id,
+                            'keluarga_id'=>$kartuKeluarga->id,
                             'kewarganegaraan_id'=>$kewarganegaraan->id
                         ];
                     endforeach;

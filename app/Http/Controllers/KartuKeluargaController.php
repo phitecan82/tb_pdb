@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 class KartuKeluargaController extends Controller
 {
     public function index(){
-        $keluarga = KartuKeluarga::withCount('penduduks')->paginate(15);
+
+        // Mengghitung angota keluarga
+        $keluarga = KartuKeluarga::withCount('penduduks')->paginate(10);
 
         return view('keluarga.index', compact('keluarga'));
     }
@@ -30,6 +32,9 @@ class KartuKeluargaController extends Controller
 
     public function edit(){
 
+    }
+    public function delete(){
+        
     }
 
 }
