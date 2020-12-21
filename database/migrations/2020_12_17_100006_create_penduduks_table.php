@@ -15,10 +15,10 @@ class CreatePenduduksTable extends Migration
     {
         Schema::create('penduduk', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('keluarga_id')->constrained('kartu_keluarga');
-            $table->foreignId('kewarganegaraan_id')->constrained('kewarganegaraan');
-            $table->foreignId('pekerjaan_id')->constrained('pekerjaan');
-            $table->foreignId('level_pendidikan_id')->constrained('level_pendidikan');
+            $table->foreignId('keluarga_id')->constrained('kartu_keluarga')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('kewarganegaraan_id')->constrained('kewarganegaraan')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('pekerjaan_id')->constrained('pekerjaan')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('level_pendidikan_id')->constrained('level_pendidikan')->onDelte('cascade')->onUpdate('cascade');
 
             $table->string('nama');
             $table->string('nik')->unique();

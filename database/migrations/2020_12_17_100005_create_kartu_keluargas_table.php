@@ -16,7 +16,7 @@ class CreateKartuKeluargasTable extends Migration
         Schema::create('kartu_keluarga', function (Blueprint $table) {
             $table->id();
             $table->string('no');
-            $table->foreignId('jorong_id')->constrained('jorong');
+            $table->foreignId('jorong_id')->constrained('jorong')->onDelete('cascade')->onUpdate('cascade');
             $table->date('tanggal_pencatatan');
         });
     }

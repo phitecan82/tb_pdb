@@ -36,7 +36,7 @@
 
                             <a href="{{ route('keluarga.show', [$kk->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
                             <a href="/keluarga/{{$kk->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
-                            <a href="/keluarga/{{$kk->id}}/delete" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
+                            <a href="/delete-post/{{$kk->id}}" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
                             </td>
                         </tr>
                         @endforeach

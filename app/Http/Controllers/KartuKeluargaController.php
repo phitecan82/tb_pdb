@@ -32,7 +32,7 @@ class KartuKeluargaController extends Controller
         $post->tanggal_pencatatan = $request->tanggal_pencatatan;
 
         $post->save();
-        return back()->with('post_create','Penambahan Berhasil');
+        return back()->with('post_create','Data Berhasil Ditambahkan');
     }
 
     public function store(Request $request){
@@ -44,7 +44,9 @@ class KartuKeluargaController extends Controller
     public function edit(){
 
     }
-    public function delete(){
+    public function deleteKeluarga($id){
+        KartuKeluarga::where('id',$id)->delete();
+        return  back()->with('post_delete','Data Berhasil Di Ubah');
         
     }
 

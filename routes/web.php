@@ -25,3 +25,4 @@ Route::resource('keluarga',KartuKeluargaController::class);
 
 
 Route::post('/keluarga/index',[KartuKeluargaController::class,'createKeluarga'])->name('post.create');    
+Route::get('/delete-post/{id}',[KartuKeluargaController::class,'deleteKeluarga']);
