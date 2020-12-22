@@ -32,7 +32,7 @@ Route::get('/delete-post/{id}',[KartuKeluargaController::class,'deleteKeluarga']
 
 Route::get('/penduduk', [PendudukController::class,'index'])->name('penduduk');
 Route::post('/kelolaPenduduk',[PendudukController::class,'createPenduduk'])->name('');
-Route::get('/penduduk/detail/{id}', [PendudukController::class,'detail']);
+Route::get('/detailPenduduk/{id}', [PendudukController::class,'detail']);
 Route::get('laporan/laporan/{id}',[PendudukController::class,'laporan']);
 Route::get('/penduduk/delete/{id}', [PendudukController::class,'delete']);
 Route::get('laporan/laporan',[PendudukController::class,'laporan']);

@@ -16,7 +16,7 @@ class Penduduk extends Model
     
 
     public function kartuKeluarga(){
-        return $this->belongsTo('kartu_keluarga', 'keluarga_id', 'id');
+        return $this->belongsTo('kartu_keluarga', 'keluarga_id','id');
     }
 
     public function levelPendidikan(){

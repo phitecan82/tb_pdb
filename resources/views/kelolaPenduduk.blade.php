@@ -27,9 +27,6 @@
                             <th scope="col">Kepala Keluarga</th>
                             <th scope="col">Negara</th>
                             <th scope="col">NIK</th>
-                            <th scope="col">Status Pernikahan</th>
-                            <th scope="col">Agama</th>
-                            <th scope="col">Pendidikan Terahir</th>
                             <th scope="col">Aksi</th>
                             </tr>
 						</thead>
@@ -40,12 +37,10 @@
                             <td> {{$pd -> ayah}}</td>
                             <td> {{$pd -> kewarganegaraan->nama_kewarganegaraan}}</td>
                             <td> {{$pd -> nik}}</td>
-                            <td> {{$pd -> status_pernikahan}}</td>
-                            <td> {{$pd -> agama}}</td>
-                            <td> {{$pd -> nama_pendidikan}}</td>
+                            
                             <td>
 
-                            <a href="/penduduk/detail/{{ $pd->id }}" class="btn btn-primary btn-sm" type="button">Detail</a>
+                            <a href="/detailPenduduk/{{ $pd->id }}" class="btn btn-primary btn-sm" type="button">Detail</a>
                             <a href="/penduduk/{{$pd->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
                             <a href="/penduduk/delete/{{ $pd->id }}" class = "btn btn-danger btn-sm">Delete</a>
                             </td>
@@ -87,6 +82,7 @@
                         </select>
                 </div>
             </div>
+            
             
             <div class="form-group">
                 <label for="exampleInputEmail1">Tanggal Pencatatan</label>

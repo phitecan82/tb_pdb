@@ -74,7 +74,6 @@
                                     <th>Tanggal Lahir</th>
                                     <th>Status</th>
                                     <th>Status Pernikahan</th>
-                                    <th>Aksi</th>
                                 </tr>
                                 </thead>
 
@@ -87,10 +86,6 @@
                                             <td>{{ $penduduk->tanggal_lahir }}</td>
                                             <td>{{ $penduduk->status_keluarga }}</td>
                                             <td>{{ $penduduk->status_pernikahan }}</td>
-                                            <td>
-                                            <a href="/keluarga/{{$penduduk->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
-                                            <a href="/keluarga/{{$penduduk->id}}/delete" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
-                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

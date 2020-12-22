@@ -22,7 +22,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label for="" class="col-form-label">{{ $keluarga->no }}</label>
+                                    <label for="" class="col-form-label">{{ $penduduks->nik }}</label>
                                 </div>
 
                                 <div class="col-md-3">
@@ -30,7 +30,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label for="" class="col-form-label">{{ $keluarga->tanggal_pencatatan }}</label>
+                                    <label for="" class="col-form-label">{{ $penduduks->tanggal_pencatatan }}</label>
                                 </div>
                             </div>
 
@@ -40,7 +40,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label for="" class="col-form-label">{{ $keluarga->jorong->nagari->nama }}</label>
+                                    <label for="" class="col-form-label">{{ $penduduks->nama_nagari }}</label>
                                 </div>
 
                                 <div class="col-md-3">
@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label for="" class="col-form-label">{{ $keluarga->jorong->nama }}</label>
+                                    <label for="" class="col-form-label">{{ $penduduks->nama_jorong }}</label>
                                 </div>
                             </div>
                         </div>
@@ -79,20 +79,18 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach($penduduks as $penduduk)
                                         <tr>
-                                            <td>{{ $penduduk->nik }}</td>
-                                            <td>{{ $penduduk->nama }}</td>
-                                            <td>{{ $penduduk->tempat_lahir }}</td>
-                                            <td>{{ $penduduk->tanggal_lahir }}</td>
-                                            <td>{{ $penduduk->status_keluarga }}</td>
-                                            <td>{{ $penduduk->status_pernikahan }}</td>
+                                            <td>{{ $penduduks->nik }}</td>
+                                            <td>{{ $penduduks->nama }}</td>
+                                            <td>{{ $penduduks->tempat_lahir }}</td>
+                                            <td>{{ $penduduks->tanggal_lahir }}</td>
+                                            <td>{{ $penduduks->status_keluarga }}</td>
+                                            <td>{{ $penduduks->status_pernikahan }}</td>
                                             <td>
-                                            <a href="/keluarga/{{$penduduk->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
-                                            <a href="/keluarga/{{$penduduk->id}}/delete" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
+                                            <a href="/keluarga/{{$penduduks->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
+                                            <a href="/keluarga/{{$penduduks->id}}/delete" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
                                             </td>
                                         </tr>
-                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

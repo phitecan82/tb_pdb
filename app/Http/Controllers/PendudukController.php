@@ -16,13 +16,19 @@ class PendudukController extends Controller
 {
     public function index(){
         $pdd = Penduduk::orderBy('id','DESC')->paginate(10);
+        $keluarga = KartuKeluarga::paginate(10);
         //dd($pdd);
-        return view('kelolaPenduduk',compact('pdd'));
+        return view('kelolaPenduduk',compact('pdd','keluarga'));
     }
         public function detail($id){
-        $pd= Penduduk::with('kartu_keluarga','level_pendidikan','pekerjaan','kewarganegaraan')->find($id);
+            $penduduks = Penduduk::where('penduduk.id',$id)->
+            join('kartu_keluarga','penduduk.keluarga_id','=','kartu_keluarga.id')
+            ->join('jorong','kartu_keluarga.jorong_id','=','jorong.id')
+            ->join('nagari','jorong.nagari_id','=','nagari.id')
+            ->first();
+
         
-        return view('pendudukDetail', compact('pd'));
+        return view('detailPenduduk', compact('penduduks','id'));
         }
         public function createPenduduk(Request $request){
             $post = new Penduduk();

@@ -22,7 +22,7 @@ class KartuKeluargaController extends Controller
     public function show(KartuKeluarga $keluarga){
 
         $penduduks = Penduduk::where('keluarga_id', $keluarga->id)->get();
-        return view('keluarga.show', compact('keluarga', 'penduduks'));
+        return view('keluarga.show', compact('keluarga', 'penduduks',));
     }
     
     public function createKeluarga(Request $request){
@@ -42,7 +42,7 @@ class KartuKeluargaController extends Controller
     }
 
     public function updateKeluarga(Request $request){
-        $post = KartuKeluarga::find($request->id);
+        $post = KartuKeluarga::find($request->id);  
         $post->no = $request->no; 
         $post->jorong_id = $request->jorong;
         $post->tanggal_pencatatan = $request->tanggal_pencatatan;

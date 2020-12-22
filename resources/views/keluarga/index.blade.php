@@ -26,7 +26,6 @@
                             <th scope="col">Nomor KK</th>
                             <th scope="col">Nagari</th>
                             <th scope="col">Jorong</th>
-                            <th scope="col">Total Anggota</th>
                             <th scope="col">Tanggal Pencatatan</th>
                             <th scope="col">Aksi</th>
                             </tr>
@@ -37,7 +36,6 @@
                             <td> {{$kk -> no}}</td>
                             <td> {{$kk -> jorong->nagari->nama_nagari}}</td>
                             <td> {{$kk -> jorong->nama_jorong}}</td>
-                            <td> {{$kk -> penduduks_count}}</td>
                             <td> {{$kk -> tanggal_pencatatan}}</td>
                             <td>
 
