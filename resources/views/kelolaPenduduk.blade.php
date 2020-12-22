@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
+
 <div class="main">
     <div class="main-content">
         <div class="container-fluid">
@@ -12,6 +14,11 @@
                         <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModalScrollable"></i></button>
                     </div>
 				</div>
+                @if (Session::has('success'))
+                    <div class="alert alert-success alert-block">
+                    {{Session::get('success')}}
+                </div>
+                @endif  
 				<div class="panel-body">
 					<table class="table">
 						<thead>
@@ -20,7 +27,9 @@
                             <th scope="col">Kepala Keluarga</th>
                             <th scope="col">Negara</th>
                             <th scope="col">NIK</th>
+                            <th scope="col">Status Pernikahan</th>
                             <th scope="col">Agama</th>
+                            <th scope="col">Pendidikan Terahir</th>
                             <th scope="col">Aksi</th>
                             </tr>
 						</thead>
@@ -29,14 +38,16 @@
                         <tr>
                             <td> {{$pd -> keluarga_id}}</td>
                             <td> {{$pd -> ayah}}</td>
-                            <td> {{$pd -> kewarganegaraan['nama_kewarganegaraan]}}</td>
+                            <td> {{$pd -> kewarganegaraan->nama_kewarganegaraan}}</td>
                             <td> {{$pd -> nik}}</td>
+                            <td> {{$pd -> status_pernikahan}}</td>
                             <td> {{$pd -> agama}}</td>
+                            <td> {{$pd -> nama_pendidikan}}</td>
                             <td>
 
-                            <a href="{{ route('penduduk.index', [$pd->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
+                            <a href="/penduduk/detail/{{ $pd->id }}" class="btn btn-primary btn-sm" type="button">Detail</a>
                             <a href="/penduduk/{{$pd->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
-                            <a href="/delete-post/{{$pd->id}}" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
+                            <a href="/penduduk/delete/{{ $pd->id }}" class = "btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
                         @endforeach
@@ -60,25 +71,23 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-            @if(Session::has('post_created'))
-                <div class="alert alert-sucsess" role="alert">
-                    {{Session::get(post_created)}}
-                </div>
-            @endif
-            <form  method = "POST" action="{{route('post.create')}}">
+            <div class="modal-body">    
+            <form  method = "POST" action="">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1"></label>
-                <input name ="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
+                <label for="no">No KK</label>
+                <input name ="id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">No KK</label>
-                <input name ="no" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
-            <div class="form-group">
-
-        
+                <div class="form-group col-md-12">
+                    <label for="jorong">Jorong</label>
+                        <select class="form-control" id="jorong" name="jorong">
+                            <option value="">Pilih jorong</option>
+                        </select>
+                </div>
+            </div>
+            
             <div class="form-group">
                 <label for="exampleInputEmail1">Tanggal Pencatatan</label>
                 <input name ="tanggal_pencatatan" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Agama">        

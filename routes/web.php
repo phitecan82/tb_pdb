@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\KartuKeluargaController;
+use App\Http\Controllers\PendudukController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,19 +18,23 @@ Route::get('/', function () {
     return view('home');
 });
 
-use App\Http\Controllers\KartuKeluargaController;
-use App\Http\Controllers\PendudukController;
 
 
 Route::resource('keluarga',KartuKeluargaController::class);
-Route::post('/keluarga/index',[KartuKeluargaController::class,'createKeluarga'])->name('post.create');    
+Route::post('/keluarga/index',[KartuKeluargaController::class,'createKeluarga'])->name('post.create');
+Route::post('/keluarga/edit/{id}',[KartuKeluargaController::class,'editKeluarga']);  
+Route::post('/keluarga/edit',[KartuKeluargaController::class,'updateKeluarga'])->name('post.update'); 
 Route::get('/delete-post/{id}',[KartuKeluargaController::class,'deleteKeluarga']);
 
 
 
-Route::get('/penduduk', 'PendudukController@index');
 
+
+Route::get('/penduduk', [PendudukController::class,'index'])->name('penduduk');
+Route::post('/kelolaPenduduk',[PendudukController::class,'createPenduduk'])->name('');
+Route::get('/penduduk/detail/{id}', [PendudukController::class,'detail']);
 Route::get('laporan/laporan/{id}',[PendudukController::class,'laporan']);
+Route::get('/penduduk/delete/{id}', [PendudukController::class,'delete']);
 Route::get('laporan/laporan',[PendudukController::class,'laporan']);
 
 

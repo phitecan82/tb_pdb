@@ -16,19 +16,43 @@ class PendudukController extends Controller
 {
     public function index(){
         $pdd = Penduduk::orderBy('id','DESC')->paginate(10);
+        //dd($pdd);
         return view('kelolaPenduduk',compact('pdd'));
     }
-    public function show(){
-
-    }
-    public function create(){
-
-    }
+        public function detail($id){
+        $pd= Penduduk::with('kartu_keluarga','level_pendidikan','pekerjaan','kewarganegaraan')->find($id);
+        
+        return view('pendudukDetail', compact('pd'));
+        }
+        public function createPenduduk(Request $request){
+            $post = new Penduduk();
+            $pd->keluarga_id = $request->keluarga_id;
+            $pd->nama = $request->nama;
+            $pd->nik = $request->nik;
+            $pd->tempat_lahir = $request->tempat_lahir;
+            $pd->tanggal_lahir = $request->tanggal_lahir;
+            $pd->agama = $request->agama;
+            $pd->jenis_kelamin = $request->jenis_kelamin;
+            $pd->level_pendidikan_id = $request->level_pendidikan_id;
+            $pd->pekerjaan_id = $request->pekerjaan_id;
+            $pd->status_pernikahan = $request->status_pernikahan;
+            $pd->status_keluarga = $request->status_keluarga;
+            $pd->kewarganegaraan_id = $request->kewarganegaraan_id;
+            $pd->ayah = $request->ayah;
+            $pd->ibu = $request->ibu;
+    
+            $post->save();
+            return back()->with('post_create','Data Berhasil Ditambahkan');
+        }
     public function edit(){
 
     }
-    public function delete(){
+    public function delete($id){
         
+        Penduduk::where('id',$id)->delete();
+
+        return redirect('/penduduk')->with(['success' => 'Data berhasil di hapus']);
+
     }
     public function laporan(Request $request){
         

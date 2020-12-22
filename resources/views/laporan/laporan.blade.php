@@ -80,7 +80,7 @@
                                 <th>Nagari</th>
                                 <th>NIK</th>
                                 <th>Agama</th>
-                                <th>Tempat Tinggal</th>
+                                <th>Nagari</th>
                                 <th>Pekerjaan</th>
                                 <th>Pendidikan</th>
                                 <th>Umur</th>
@@ -94,8 +94,7 @@
                                 <td>{{$item->nama_nagari}}</td>
                                 <td>{{ $item->nik }}</td>
                                 <td>{{ $item->agama }}</td>
-                                <td>{{ $item->nama_jorong }}, 
-                                    {{ $item->nama_nagari }}</td>
+                                <td> {{ $item->nama_nagari }}</td>
                                 <td>{{ $item->nama_pekerjaan }}</td>
                                 <td>{{ $item->nama_pendidikan }}</td>
                                 <td>
@@ -137,7 +136,7 @@
                                 <th>Nama</th>
                                 <th>NIK</th>
                                 <th>Agama</th>
-                                <th>Tempat Tinggal</th>
+                                <th>Nagari</th>
                                 <th>Pekerjaan</th>
                                 <th>Pendidikan</th>
                                 <th>Umur</th>
@@ -150,8 +149,7 @@
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->nik }}</td>
                                 <td>{{ $item->agama }}</td>
-                                <td>{{ $item->nama_jorong }}, 
-                                    {{ $item->nama_nagari }}</td>
+                                <td>{{ $item->nama_nagari }}</td>
                                 <td>{{ $item->nama_pekerjaan }}</td>
                                 <td>{{ $item->nama_pendidikan }}</td>
                                 <td>

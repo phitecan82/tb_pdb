@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
+
 <div class="main">
     <div class="main-content">
         <div class="container-fluid">
@@ -12,6 +14,11 @@
                         <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModalScrollable"></i></button>
                     </div>
 				</div>
+                @if (Session::has('post_create'))
+                    <div class="alert alert-success alert-block">
+                    {{Session::get('post_create')}}
+                </div>
+                @endif
 				<div class="panel-body">
 					<table class="table">
 						<thead>
@@ -35,7 +42,7 @@
                             <td>
 
                             <a href="{{ route('keluarga.show', [$kk->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
-                            <a href="/keluarga/{{$kk->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('keluarga.edit', [$kk->id]) }}" class = "btn btn-warning btn-sm">Edit</a>
                             <a href="/delete-post/{{$kk->id}}" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
                             </td>
                         </tr>
@@ -61,11 +68,6 @@
                 </button>
             </div>
             <div class="modal-body">
-            @if(Session::has('post_created'))
-                <div class="alert alert-sucsess" role="alert">
-                    {{Session::get(post_created)}}
-                </div>
-            @endif
             <form  method = "POST" action="{{route('post.create')}}">
             @csrf
             <div class="form-group">
@@ -81,7 +83,7 @@
             <label for="exampleFormControlSelect1">Jorong</label>
             <select name ="jorong_id" class="form-control" id="exampleFormControlSelect1">
             @foreach($jorong as $k)
-            <option value = "{{$k->id}}">{{$k->nama}}</option>
+            <option value = "{{$k->id}}">{{$k->nama_jorong}}</option>
             @endforeach
             </select>
             </div>

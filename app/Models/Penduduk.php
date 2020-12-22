@@ -20,7 +20,7 @@ class Penduduk extends Model
     }
 
     public function levelPendidikan(){
-        return $this->belongsTo('App\Models\Levelpendidikan');
+        return $this->belongsTo('App\Models\LevelPendidikan');
     }
 
     public function kewarganegaraan(){

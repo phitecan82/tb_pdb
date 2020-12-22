@@ -16,8 +16,6 @@ class KartuKeluargaController extends Controller
         $keluarga = KartuKeluarga::withCount('penduduks')->paginate(10);
         $jorong = Jorong::get();
 
-
-
         return view('keluarga.index', compact('keluarga','jorong'));
     }
 
@@ -37,14 +35,21 @@ class KartuKeluargaController extends Controller
         $post->save();
         return back()->with('post_create','Data Berhasil Ditambahkan');
     }
-
-    public function store(Request $request){
-
+    public function editKeluarga($id){
+        $post= KartuKeluarga::find($id);
+        $jorong = Jorong::get();
+        return view('keluarga.edit', compact('post','jorong'));
     }
 
+    public function updateKeluarga(Request $request){
+        $post = KartuKeluarga::find($request->id);
+        $post->no = $request->no; 
+        $post->jorong_id = $request->jorong;
+        $post->tanggal_pencatatan = $request->tanggal_pencatatan;
+        
+        $post->save();
 
-
-    public function edit(){
+        return back('')->with('success','Data Keluarga Berhasil  di ubah');
 
     }
     public function deleteKeluarga($id){
