@@ -16,9 +16,7 @@ class PendudukController extends Controller
 {
     public function index(){
         $pdd = Penduduk::orderBy('id','DESC')->paginate(10);
-        return view('penduduk.index',compact('pdd'));
-
-
+        return view('kelolaPenduduk',compact('pdd'));
     }
     public function show(){
 
