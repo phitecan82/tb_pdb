@@ -9,10 +9,11 @@ class KartuKeluarga extends Model
 {
     use HasFactory;
     protected $table = 'kartu_keluarga';
+    protected $primaryKey = 'id';
+
 
     public function penduduks(){
-        // fungsi count penduduk
-        return $this->hasMany(Penduduk::class, 'keluarga_id', 'id');
+        return $this->hasMany(Penduduk::class);
     }
 
     public function jorong(){

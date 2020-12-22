@@ -9,6 +9,7 @@ class Nagari extends Model
 {
     use HasFactory;
     protected $table = 'nagari';
+    
 
     public function jorong(){
         return $this->hasMany('App\Models\Jorong');

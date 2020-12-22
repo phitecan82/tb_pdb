@@ -11,10 +11,11 @@ use App\Models\Kewarganegaraan;
 use App\Models\Nagari;
 
 
+
 class PendudukController extends Controller
 {
     public function index(){
-        $pdd = Penduduk::paginate(10);
+        $pdd = Penduduk::orderBy('id','DESC')->paginate(10);
         return view('penduduk.index',compact('pdd'));
 
 
@@ -39,52 +40,41 @@ class PendudukController extends Controller
         $getNagari = Nagari::pluck('nama_nagari','id');
         $perpage = 10;
 
-            if(!empty($produktif)){
-            $penduduk = Penduduk::join('kartu_keluarga','kartu_keluarga.id','=','penduduk.keluarga_id')
+
+
+            $penduduk = Penduduk::join('kartu_keluarga','penduduk.keluarga_id','=','kartu_keluarga.id')
+            ->join('jorong','kartu_keluarga.jorong_id','=','jorong.id')
+            ->join('nagari','jorong.nagari_id','=','nagari.id')
+            ->join('kewarganegaraan','penduduk.kewarganegaraan_id','=','kewarganegaraan.id')
+            ->join('level_pendidikan','penduduk.level_pendidikan_id','=','level_pendidikan.id')
+            ->join('pekerjaan','penduduk.pekerjaan_id','=','pekerjaan.id')
+            ->where([['tanggal_lahir', '<=', date('Y-m-d', strtotime('-14 years'))],
+                    ['tanggal_lahir', '>=', date('Y-m-d', strtotime('-64 years'))]])
+                    ->paginate($perpage);
+
+                $pendudukNagari = Penduduk::join('kartu_keluarga','penduduk.keluarga_id','=','kartu_keluarga.id')
                                 ->join('jorong','kartu_keluarga.jorong_id','=','jorong.id')
                                 ->join('nagari','jorong.nagari_id','=','nagari.id')
-                                ->join('kewarganegaraan','kewarganegaraan.id','=','penduduk.kewarganegaraan_id')
-                                ->join('level_pendidikan','level_pendidikan.id','=','penduduk.level_pendidikan_id')
-                                ->join('pekerjaan','pekerjaan.id','=','penduduk.pekerjaan_id')
-                                ->where([['penduduk.nama','like',"%$produktif%"],
-                                        ['tanggal_lahir', '<=', date('Y-m-d', strtotime('-14 years'))],
-                                        ['tanggal_lahir', '>=', date('Y-m-d', strtotime('-64 years'))]       
-                                        ])
+                                ->join('kewarganegaraan','penduduk.kewarganegaraan_id','=','kewarganegaraan.id')
+                                ->join('level_pendidikan','penduduk.level_pendidikan_id','=','level_pendidikan.id')
+                                ->join('pekerjaan','penduduk.pekerjaan_id','=','pekerjaan.id')
+                                ->where('nama_nagari', 'Hiliran Gumanti')
                                 ->paginate($perpage);
-            }
-            else{
-                $penduduk = Penduduk::where([['tanggal_lahir', '<=', date('Y-m-d', strtotime('-14 years'))],
-                                            ['tanggal_lahir', '>=', date('Y-m-d', strtotime('-64 years'))]       
-                                    ])->paginate($perpage);
-            }
-            
 
-                $pendudukNagari = Penduduk::join('kartu_keluarga','kartu_keluarga.id','=','penduduk.keluarga_id')
+
+                $pendudukNagariPendidikan = Penduduk::join('kartu_keluarga','penduduk.keluarga_id','=','kartu_keluarga.id')
                                 ->join('jorong','kartu_keluarga.jorong_id','=','jorong.id')
                                 ->join('nagari','jorong.nagari_id','=','nagari.id')
-                                ->join('kewarganegaraan','kewarganegaraan.id','=','penduduk.kewarganegaraan_id')
-                                ->join('level_pendidikan','level_pendidikan.id','=','penduduk.level_pendidikan_id')
-                                ->join('pekerjaan','pekerjaan.id','=','penduduk.pekerjaan_id')
-                                ->where([['nagari.id','=', $nagari]])
+                                ->join('kewarganegaraan','penduduk.kewarganegaraan_id','=','kewarganegaraan.id')
+                                ->join('level_pendidikan','penduduk.level_pendidikan_id','=','level_pendidikan.id')
+                                ->join('pekerjaan','penduduk.pekerjaan_id','=','pekerjaan.id')
+                                ->Where('nama_nagari','Lembah Gumanti')
+                                ->whereBetween('level_pendidikan_id', [1, 3])
                                 ->paginate($perpage);
+                            
 
-                                
+                                dd($pendudukNagariPendidikan);
 
-                $pendudukNagariPendidikan = Penduduk::join('kartu_keluarga','kartu_keluarga.id','=','penduduk.keluarga_id')
-                                ->join('jorong','kartu_keluarga.jorong_id','=','jorong.id')
-                                ->join('nagari','jorong.nagari_id','=','nagari.id')
-                                ->join('kewarganegaraan','kewarganegaraan.id','=','penduduk.kewarganegaraan_id')
-                                ->join('level_pendidikan','level_pendidikan.id','=','penduduk.level_pendidikan_id')
-                                ->join('pekerjaan','pekerjaan.id','=','penduduk.pekerjaan_id')
-                                ->where('nagari.id','=', $nagariPendidikan)
-                                ->where(function($q) {
-                                    $q->where('level_pendidikan.nama_pendidikan', '=',"Tidak Sekolah")
-                                    ->orWhere('level_pendidikan.nama_pendidikan', '=',"SD")
-                                    ->orWhere('level_pendidikan.nama_pendidikan', '=',"SLTP");
-                                })
-                                ->paginate($perpage);
-
-            // dd($pendudukNagariPendidikan);
             return view('laporan.laporan', compact('penduduk','getNagari','pendudukNagari','pendudukNagariPendidikan')); 
     }
 

@@ -11,7 +11,7 @@ class Jorong extends Model
     protected $table = 'jorong';
 
     public function nagari(){
-        return $this->belongsTo('App\Models\Nagari');
+        return $this->belongsTo('App\Models\Nagari','nagari_id','id');
     }
 
     public function keluarga(){

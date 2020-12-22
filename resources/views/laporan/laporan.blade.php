@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('laporan', 'active')
 
@@ -45,10 +45,10 @@
                             <td>{{ $item->nama_penduduk }}</td>
                             <td>{{ $item->nik }}</td>
                             <td>{{ $item->agama }}</td>
-                            <td>{{ $item->kartu_keluarga->jorong->nama_jorong }}, 
-                                {{ $item->kartu_keluarga->jorong->nagari->nama_nagari }}</td>
-                            <td>{{ $item->pekerjaan->nama_pekerjaan }}</td>
-                            <td>{{ $item->level_pendidikan->nama_pendidikan }}</td>
+                            <td>{{ $item->nama_jorong }}, 
+                                {{ $item->nama_nagari }}</td>
+                            <td>{{ $item->nama_pekerjaan }}</td>
+                            <td>{{ $item->nama_pendidikan }}</td>
                             <td>
                                 {{\Carbon\Carbon::parse($item->tanggal_lahir)->age}} Tahun
                             </td>
