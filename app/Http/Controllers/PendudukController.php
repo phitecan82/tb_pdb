@@ -17,7 +17,6 @@ class PendudukController extends Controller
     public function index(){
         $pdd = Penduduk::orderBy('id','DESC')->paginate(10);
         $keluarga = KartuKeluarga::paginate(10);
-        //dd($pdd);
         return view('kelolaPenduduk',compact('pdd','keluarga'));
     }
         public function detail($id){
@@ -50,9 +49,19 @@ class PendudukController extends Controller
             $post->save();
             return back()->with('post_create','Data Berhasil Ditambahkan');
         }
-    public function edit(){
+    public function edit($id){
+        $post= Penduduk::join('kartu_keluarga','penduduk.keluarga_id','=','kartu_keluarga.id')
+        ->join('jorong','kartu_keluarga.jorong_id','=','jorong.id')
+        ->join('nagari','jorong.nagari_id','=','nagari.id')
+        ->join('kewarganegaraan','penduduk.kewarganegaraan_id','=','kewarganegaraan.id')
+        ->join('level_pendidikan','penduduk.level_pendidikan_id','=','level_pendidikan.id')
+        ->join('pekerjaan','penduduk.pekerjaan_id','=','pekerjaan.id')
+        ->where('penduduk.id',$id)->first();
+        return view('', compact('post'));
 
     }
+
+
     public function delete($id){
         
         Penduduk::where('id',$id)->delete();

@@ -41,7 +41,7 @@
                             <td>
 
                             <a href="/detailPenduduk/{{ $pd->id }}" class="btn btn-primary btn-sm" type="button">Detail</a>
-                            <a href="/penduduk/{{$pd->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
+                            <a href="/edit/{{$pd->id}}" class = "btn btn-warning btn-sm">Edit</a>
                             <a href="/penduduk/delete/{{ $pd->id }}" class = "btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
@@ -70,7 +70,11 @@
             <form  method = "POST" action="">
             @csrf
             <div class="form-group">
-                <label for="no">No KK</label>
+                <label for="id">ID</label>
+                <input name ="id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
+            </div>
+            <div class="form-group">
+                <label for="no">Keluarga</label>
                 <input name ="id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
             </div>
 
