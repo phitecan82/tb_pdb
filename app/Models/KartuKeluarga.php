@@ -13,7 +13,7 @@ class KartuKeluarga extends Model
 
 
     public function penduduks(){
-        return $this->hasMany(Penduduk::class);
+        return $this->hasMany(Penduduk::class,'keluarga_id', 'id');
     }
 
     public function jorong(){
