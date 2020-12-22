@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                 <div class="panel">
 				<div class="panel-heading">
-					<h3 class="panel-title">Daftar Kartu Keluarga</h3>
+					<h3 class="panel-title">Daftar Penduduk</h3>
                     <div class="right">
                         <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModalScrollable"></i></button>
                     </div>
@@ -29,13 +29,13 @@
                         <tr>
                             <td> {{$pd -> keluarga_id}}</td>
                             <td> {{$pd -> ayah}}</td>
-                            <td> {{$pd -> kewarganegaraan['nama_kewarganegaraan']}}</td>
+                            <td> {{$pd -> kewarganegaraan['nama_kewarganegaraan]}}</td>
                             <td> {{$pd -> nik}}</td>
                             <td> {{$pd -> agama}}</td>
                             <td>
 
-                            <a href="{{ route('keluarga.show', [$pd->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
-                            <a href="/keluarga/{{$pd->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('penduduk.index', [$pd->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
+                            <a href="/penduduk/{{$pd->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
                             <a href="/delete-post/{{$pd->id}}" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
                             </td>
                         </tr>

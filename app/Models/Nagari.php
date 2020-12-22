@@ -9,6 +9,10 @@ class Nagari extends Model
 {
     use HasFactory;
     protected $table = 'nagari';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'nama_nagari',
+    ];
     
 
     public function jorong(){

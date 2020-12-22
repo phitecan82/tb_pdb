@@ -9,6 +9,10 @@ class Pekerjaan extends Model
 {
     use HasFactory;
     protected $table = 'pekerjaan';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'nama_pekerjaan',
+    ];
 
     public $timestamps = false;
     

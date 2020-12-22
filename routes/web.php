@@ -26,7 +26,9 @@ Route::post('/keluarga/index',[KartuKeluargaController::class,'createKeluarga'])
 Route::get('/delete-post/{id}',[KartuKeluargaController::class,'deleteKeluarga']);
 
 
-Route::get('/penduduk/index',[PendudukController::class,'index']);
+
+Route::get('penduduk/index',[PendudukController::class,'index']);
+
 Route::get('laporan/laporan/{id}',[PendudukController::class,'laporan']);
 Route::get('laporan/laporan',[PendudukController::class,'laporan']);
 

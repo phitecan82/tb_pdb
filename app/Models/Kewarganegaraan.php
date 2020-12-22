@@ -9,6 +9,10 @@ class Kewarganegaraan extends Model
 {
     use HasFactory;
     protected $table = 'kewarganegaraan';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'nama_kewarganegaraan',
+    ];
 
     public $timestamps = false;
 

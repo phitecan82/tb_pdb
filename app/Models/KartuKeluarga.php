@@ -11,6 +11,11 @@ class KartuKeluarga extends Model
     protected $table = 'kartu_keluarga';
     protected $primaryKey = 'id';
 
+    protected $fillable = [
+        'no','jorong_id', 'tanggal_pencatatan',
+    ];
+
+
 
     public function penduduks(){
         return $this->hasMany(Penduduk::class,'keluarga_id', 'id');

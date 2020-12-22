@@ -9,6 +9,10 @@ class LevelPendidikan extends Model
 {
     use HasFactory;
     protected $table = 'level_pendidikan';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'nama_pendidikan',
+    ];
 
     public $timestamps = false;
     

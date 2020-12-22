@@ -10,6 +10,9 @@ class Penduduk extends Model
     use HasFactory;
     protected $table = 'penduduk';
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'keluarga_id','nama','nik', 'tempat_lahir', 'tanggal_lahir','agama','jenis_kelamin','level_pendidikan_id','pekerjaan_id','status_pernikahan','status_keluarga','kewarganegaraan_id','ayah','ibu',
+    ];
     
 
     public function kartuKeluarga(){
