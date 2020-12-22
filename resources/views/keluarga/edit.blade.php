@@ -2,19 +2,22 @@
 
 
 @section('content')
-            <div class="card-header">
-                <h4 class="card-title">
-                
-                    Edit Kartu Keluarga
-            
-                </h4>
-                <a href="/" style="color: red;">back</a>
-            </div>
 
+<div class="main">
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Edit Data Keluarga</h3>
+                    <br>
+            
             <div class="card-body p-3">
-            <form action="/update" method="post">
-                    {{ csrf_field() }}
-                    <input type="hidden" id="id" name="id" value="{{$kk->id}}">
+            <form action="{{route('post.update',['id' => $post->id])}}" method="post">
+                    @method('PATCH')
+                    @csrf
+                    <input type="hidden" id="id" name="id" value="{{$post->id}}">
                     <div class="form-group">
                         <label for="no">No KK</label>
                         <input type="text"  class="form-control" id="no" name="no" placeholder="No" value="{{$post->no}}">
@@ -25,14 +28,11 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Jorong</label>
                         <select name ="jorong_id" class="form-control" id="exampleFormControlSelect1">
-                        @foreach($jorong as $k)
-                        <option value = "{{$k->id}}">{{$k->nama_jorong}}</option>
-                        @endforeach
+                        <option value = "{{$post->id}}">{{$post->nama_jorong}}</option>
                         </select>
                         </div>
 
                     <div class="form-group" >
-                        <div class="form-group col-md-12">
                             <label for="tanggal_pencatatan">tanggal_pencatatan</label>
                             <input type="date"  class="form-control" id="tanggal_pencatatan" name="tanggal_pencatatan" placeholder="tanggal pencatatan" value="{{$post->tanggal_pencatatan}}">
                             <span class="text-danger" id="tanggal_pencatatanError"></span>
@@ -41,6 +41,7 @@
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                        <a href="/" class="btn btn-warning waves-effect waves-light">back</a>
                     </div>
 
                 </form>

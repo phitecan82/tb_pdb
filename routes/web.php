@@ -22,8 +22,8 @@ Route::get('/', function () {
 
 Route::resource('keluarga',KartuKeluargaController::class);
 Route::post('/keluarga/index',[KartuKeluargaController::class,'createKeluarga'])->name('post.create');
-Route::post('/keluarga/edit/{id}',[KartuKeluargaController::class,'editKeluarga']);  
-Route::post('/keluarga/edit',[KartuKeluargaController::class,'updateKeluarga'])->name('post.update'); 
+Route::get('/keluarga/edit/{id}',[KartuKeluargaController::class,'editKeluarga'])->name('keluarga.edit');
+Route::patch('/keluarga/edit/{id}',[KartuKeluargaController::class,'updateKeluarga'])->name('post.update'); 
 Route::get('/delete-post/{id}',[KartuKeluargaController::class,'deleteKeluarga']);
 
 
