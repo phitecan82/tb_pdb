@@ -15,7 +15,7 @@ class CreateLevelPendidikansTable extends Migration
     {
         Schema::create('level_pendidikan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama_pendidikan');
         });
     }
 

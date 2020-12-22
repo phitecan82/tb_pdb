@@ -20,7 +20,7 @@ class JorongSeeder extends Seeder
         foreach ($nagaris as $nagari):
             Jorong::factory()
                 ->count(2)
-                ->hasKeluargas(20)
+                ->hasKeluarga(20)
                 ->create(['nagari_id'=>$nagari->id]);
         endforeach;
     }

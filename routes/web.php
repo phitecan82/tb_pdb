@@ -20,9 +20,11 @@ Route::get('/', function () {
 use App\Http\Controllers\KartuKeluargaController;
 use App\Http\Controllers\PendudukController;
 
-Route::resource('penduduk',PendudukController::class);
+
 Route::resource('keluarga',KartuKeluargaController::class);
-
-
 Route::post('/keluarga/index',[KartuKeluargaController::class,'createKeluarga'])->name('post.create');    
 Route::get('/delete-post/{id}',[KartuKeluargaController::class,'deleteKeluarga']);
+
+
+Route::get('/penduduk/index',[PendudukController::class,'index']);
+Route::get('laporan/laporan',[PendudukController::class,'laporan']);

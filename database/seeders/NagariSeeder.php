@@ -17,7 +17,7 @@ class NagariSeeder extends Seeder
         $nagaris = ['Hiliran Gumanti', 'Lembah Gumanti', 'Garabak', 'Sariak Alahan Tigo'];
         foreach ($nagaris as $nagari):
             Nagari::create([
-                'nama'=>$nagari
+                'nama_nagari'=>$nagari
             ]);
         endforeach;
     }

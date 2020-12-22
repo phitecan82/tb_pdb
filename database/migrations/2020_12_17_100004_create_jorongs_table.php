@@ -17,7 +17,7 @@ class CreateJorongsTable extends Migration
             $table->id();
             $table->foreignId('nagari_id')->constrained('nagari');
 
-            $table->string('nama');
+            $table->string('nama_jorong');
         });
     }
 

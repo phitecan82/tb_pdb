@@ -18,7 +18,7 @@ class LevelPendidikanSeeder extends Seeder
 
         foreach ($level as $lvl):
             LevelPendidikan::create([
-                'nama'=>$lvl
+                'nama_pendidikan'=>$lvl
             ]);
         endforeach;
     }

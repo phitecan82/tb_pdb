@@ -3,7 +3,7 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="/keluarga" class="active"><i class="lnr lnr-user"></i> <span>Keluarga</span></a></li>
-						<li><a href="/siswa" class=""><i class="lnr lnr-user"></i> <span>Penduduk</span></a></li>
+						<li><a href="/penduduk/index" class=""><i class="lnr lnr-user"></i> <span>Penduduk</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-chart-bars"></i> <span>Laporan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">

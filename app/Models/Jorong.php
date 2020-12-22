@@ -11,11 +11,11 @@ class Jorong extends Model
     protected $table = 'jorong';
 
     public function nagari(){
-        return $this->belongsTo(Nagari::class);
+        return $this->belongsTo('App\Models\Nagari');
     }
 
-    public function keluargas(){
-        return $this->hasMany(KartuKeluarga::class );
+    public function keluarga(){
+        return $this->hasMany('App\Models\KartuKeluarga' );
     }
 
     public $timestamps = false;

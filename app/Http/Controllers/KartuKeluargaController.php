@@ -14,8 +14,11 @@ class KartuKeluargaController extends Controller
 
         // Mengghitung angota keluarga
         $keluarga = KartuKeluarga::withCount('penduduks')->paginate(10);
+        $jorong = Jorong::get();
 
-        return view('keluarga.index', compact('keluarga'));
+
+
+        return view('keluarga.index', compact('keluarga','jorong'));
     }
 
     public function show(KartuKeluarga $keluarga){

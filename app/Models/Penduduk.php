@@ -15,15 +15,15 @@ class Penduduk extends Model
     }
 
     public function levelPendidikan(){
-        return $this->belongsTo('level_pendidikan');
+        return $this->belongsTo('App\Models\Levelpendidikan');
     }
 
     public function kewarganegaraan(){
-        return $this->belongsTo('kewarganegaraan');
+        return $this->belongsTo('App\Models\Kewarganegaraan');
     }
 
     public function pekerjaan(){
-        return $this->belongsTo('pekerjaan');
+        return $this->belongsTo('App\Models\Pekerjaan');
     }
 
     public $timestamps = false;

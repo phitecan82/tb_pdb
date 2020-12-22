@@ -17,32 +17,32 @@
 						<thead>
 							<tr>
                             <th scope="col">Nomor KK</th>
-                            <th scope="col">Nagari</th>
-                            <th scope="col">Jorong</th>
-                            <th scope="col">Total Anggota</th>
-                            <th scope="col">Tanggal Pencatatan</th>
+                            <th scope="col">Kepala Keluarga</th>
+                            <th scope="col">Negara</th>
+                            <th scope="col">NIK</th>
+                            <th scope="col">Agama</th>
                             <th scope="col">Aksi</th>
                             </tr>
 						</thead>
 						<tbody>
-                        @foreach($keluarga as $kk)
+                        @foreach($pdd as $pd)
                         <tr>
-                            <td> {{$kk -> no}}</td>
-                            <td> {{$kk -> jorong->nagari->nama}}</td>
-                            <td> {{$kk -> jorong->nama}}</td>
-                            <td> {{$kk -> penduduks_count}}</td>
-                            <td> {{$kk -> tanggal_pencatatan}}</td>
+                            <td> {{$pd -> keluarga_id}}</td>
+                            <td> {{$pd -> ayah}}</td>
+                            <td> {{$pd -> kewarganegaraan['nama_kewarganegaraan']}}</td>
+                            <td> {{$pd -> nik}}</td>
+                            <td> {{$pd -> agama}}</td>
                             <td>
 
-                            <a href="{{ route('keluarga.show', [$kk->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
-                            <a href="/keluarga/{{$kk->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
-                            <a href="/delete-post/{{$kk->id}}" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
+                            <a href="{{ route('keluarga.show', [$pd->id]) }}" class="btn btn-primary btn-sm" type="button">Detail</a>
+                            <a href="/keluarga/{{$pd->id}}/edit" class = "btn btn-warning btn-sm">Edit</a>
+                            <a href="/delete-post/{{$pd->id}}" class = "btn btn-danger btn-sm" onclick = "return confirm('Yakin Mau Menghapus data ?')" >Delete</a>
                             </td>
                         </tr>
                         @endforeach
 						</tbody>
 					</table>
-                    {{ $keluarga->links() }}
+                    {{ $pdd->links() }}
 				</div>
 			</div>         
                 </div>
@@ -76,19 +76,9 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">No KK</label>
                 <input name ="no" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
-            </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Jorong  </label>
-                <input name ="jorong_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">        
-            </div>
-            <!-- <div class="form-group">
-            <label for="exampleFormControlSelect1">Jorong</label>
-            <select name ="jorong_id" class="form-control" id="exampleFormControlSelect1">
-            @foreach($keluarga as $k)
-            <option value = "{{$k->jorong->id}}">{{$k->jorong->nama}}</option>
-            @endforeach
-            </select>
-            </div> -->
+
+        
             <div class="form-group">
                 <label for="exampleInputEmail1">Tanggal Pencatatan</label>
                 <input name ="tanggal_pencatatan" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Agama">        

@@ -11,4 +11,8 @@ class Pekerjaan extends Model
     protected $table = 'pekerjaan';
 
     public $timestamps = false;
+    
+    public function penduduk(){
+        return $this->hasMany('App\Models\Penduduk');
+    }
 }

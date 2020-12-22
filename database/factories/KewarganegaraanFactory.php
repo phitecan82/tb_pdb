@@ -22,7 +22,7 @@ class KewarganegaraanFactory extends Factory
     public function definition()
     {
         return [
-            'nama'=>'Indonesia'
+            'nama_kewarganegaraan'=>'Indonesia'
         ];
     }
 }

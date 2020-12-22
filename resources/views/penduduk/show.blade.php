@@ -40,7 +40,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label for="" class="col-form-label">{{ $keluarga->jorong->nagari->nama_nagari }}</label>
+                                    <label for="" class="col-form-label">{{ $keluarga->jorong->nagari->nama }}</label>
                                 </div>
 
                                 <div class="col-md-3">
@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label for="" class="col-form-label">{{ $keluarga->jorong->nama_jorong }}</label>
+                                    <label for="" class="col-form-label">{{ $keluarga->jorong->nama }}</label>
                                 </div>
                             </div>
                         </div>

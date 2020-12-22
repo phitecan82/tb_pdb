@@ -16,7 +16,7 @@ class KartuKeluarga extends Model
     }
 
     public function jorong(){
-        return $this->belongsTo(Jorong::class);
+        return $this->belongsTo('App\Models\Jorong');
     }
 
     public $timestamps = false;

@@ -15,7 +15,7 @@ class CreateNagarisTable extends Migration
     {
         Schema::create('nagari', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama_nagari');
         });
     }
 
