@@ -14,9 +14,9 @@
                         <button type="button" class="btn"><i class="lnr lnr-plus-circle" data-toggle="modal" data-target="#exampleModalScrollable"></i></button>
                     </div>
 				</div>
-                @if (Session::has('post_create'))
+                @if (Session::has('success'))
                     <div class="alert alert-success alert-block">
-                    {{Session::get('post_create')}}
+                    {{Session::get('success')}}
                 </div>
                 @endif
 				<div class="panel-body">

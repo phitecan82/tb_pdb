@@ -33,20 +33,21 @@ class KartuKeluargaController extends Controller
         $post->tanggal_pencatatan = $request->tanggal_pencatatan;
 
         $post->save();
-        return back()->with('post_create','Data Berhasil Ditambahkan');
+        return back()->with('success','Data Berhasil Ditambahkan');
     }
     public function editKeluarga($id){
         $post= KartuKeluarga::join('jorong','kartu_keluarga.jorong_id','=','jorong.id')
+        ->select('kartu_keluarga.id','kartu_keluarga.no','kartu_keluarga.tanggal_pencatatan')
         ->where('kartu_keluarga.id',$id)->first();
-        return view('keluarga.edit', compact('post'));
+        $jorong = Jorong::get();
+        return view('keluarga.edit', compact('post','jorong'));
     }
 
-    public function updateKeluarga(Request $request,$id){
-        $post = KartuKeluarga::findOrFail($id);  
+    public function update(Request $request){
+        $post = KartuKeluarga::where('id',$request->id)->first();
         $post->no = $request->no; 
         $post->jorong_id = $request->jorong_id;
         $post->tanggal_pencatatan = $request->tanggal_pencatatan;
-        
         $post->update();
 
         return back()->with('success','Data Keluarga Berhasil  di ubah');
@@ -54,7 +55,7 @@ class KartuKeluargaController extends Controller
     }
     public function deleteKeluarga($id){
         KartuKeluarga::where('id',$id)->delete();
-        return  back()->with('post_delete','Data Berhasil Di Ubah');
+        return  back()->with('success','Data Berhasil Di Hapus');
         
     }
 
