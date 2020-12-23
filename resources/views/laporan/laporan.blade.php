@@ -63,7 +63,7 @@
             <div class="col-md-12">
                 <div class="panel">
 				<div class="panel-heading">
-					<h3 class="panel-title">Daftar Penduduk Usia Produktif</h3>
+					<h3 class="panel-title">Daftar Penduduk Pada Daerah Tertentu</h3>
 				</div>
 				<div class="panel-body">
                 {!! Form::open(['method' => 'GET', 'url' => '/laporan/laporan/{id}', 'class' => 'form-inline', 'role' => 'select'])  !!}
